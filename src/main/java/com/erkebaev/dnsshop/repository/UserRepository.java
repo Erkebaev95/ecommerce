@@ -1,0 +1,8 @@
+package com.erkebaev.dnsshop.repository;
+
+import com.erkebaev.dnsshop.model.Customer;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UserRepository extends JpaRepository<Customer, Long>, JpaSpecificationExecutor<User> {
+    Customer findByLogin(String login);
+}
