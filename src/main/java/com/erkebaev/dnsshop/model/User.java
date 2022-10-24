@@ -14,19 +14,23 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "customers", uniqueConstraints = @UniqueConstraint(columnNames = {"username", "image", "phone_number"}))
+@Table(name = "users", uniqueConstraints = @UniqueConstraint(columnNames = {"email", "image", "phone_number"}))
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "customer_id")
     private Long id;
 
     @Size(min = 3, max = 15, message = "First name should have 3-15 characters")
+    @Column(name = "first_name")
     private String firstName;
+
     @Size(min = 3, max = 15, message = "Last name should have 3-15 characters")
+    @Column(name = "last_name")
     private String lastName;
-    private String username;
+
+    private String email;
     private String country;
+
     @Column(name = "phone_number")
     private String phoneNumber;
     private String address;
@@ -41,12 +45,10 @@ public class Customer {
 
     @OneToOne(mappedBy = "customer")
     private ShoppingCart shoppingCart;
+
     @OneToMany(mappedBy = "customer")
     private List<Order> orders;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable( name = "customers_roles",
-            joinColumns = @JoinColumn(name = "customer_id", referencedColumnName = "customer_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "role_id"))
-    private Collection<Role> roles;
+    @
+    private Role roles;
 }
