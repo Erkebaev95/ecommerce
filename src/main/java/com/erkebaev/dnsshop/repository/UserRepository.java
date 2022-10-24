@@ -1,11 +1,12 @@
 package com.erkebaev.dnsshop.repository;
 
 
-import com.erkebaev.dnsshop.model.Customer;
+import com.erkebaev.dnsshop.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CustomerRepository extends JpaRepository<Customer, Long> {
-    Customer findByUsername(String username);
+public interface UserRepository extends JpaRepository<User, Long> {
+    User findByUsername(String username);
+    User findByLogin(String login);
 }
