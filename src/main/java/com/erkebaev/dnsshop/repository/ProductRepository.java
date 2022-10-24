@@ -23,7 +23,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
 
 
-    /*Customer*/
+    /*User*/
     @Query("select p from Product p where p.is_activated = true and p.is_deleted = false")
     List<Product> getAllProducts();
 

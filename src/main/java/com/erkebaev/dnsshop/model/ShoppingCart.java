@@ -23,7 +23,7 @@ public class ShoppingCart {
     private double totalPrices;
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
-    private Customer customer;
+    private User customer;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cart")
     private Set<CartItem> cartItem;

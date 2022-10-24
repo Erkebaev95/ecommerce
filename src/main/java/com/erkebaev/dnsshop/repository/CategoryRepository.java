@@ -14,7 +14,7 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
     List<Category> findAllByActivated();
 
 
-    /*Customer*/
+    /*User*/
     @Query("select new com.erkebaev.dnsshop.dto.CategoryDto(c.id, c.name, count(p.category.id)) " +
             "from Category c inner join Product p on p.category.id = c.id " +
             " where c.is_activated = true and c.is_deleted = false group by c.id")

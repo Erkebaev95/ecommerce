@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
-import java.util.Collection;
 import java.util.List;
 
 
@@ -15,7 +14,8 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "users", uniqueConstraints = @UniqueConstraint(columnNames = {"email", "image", "phone_number"}))
-public class Customer {
+public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -49,6 +49,7 @@ public class Customer {
     @OneToMany(mappedBy = "customer")
     private List<Order> orders;
 
-    @
-    private Role roles;
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
 }
